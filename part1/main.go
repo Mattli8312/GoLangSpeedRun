@@ -10,6 +10,7 @@ package main
  */
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -120,4 +121,63 @@ func main() {
 		grade = "A"
 	}
 	fmt.Println("Your grade: ", grade)
+
+	fmt.Println("Using Loops")
+
+	fmt.Println("pre increment")
+	for i := 0; i < 5; i++ {
+		fmt.Println(i)
+	}
+
+	//Infinit loops
+	for {
+		fmt.Println("Enter QUIT to exit")
+		var input string
+		fmt.Print("Enter a string: ")
+		fmt.Scanln(&input)
+		if strings.ToUpper(input) == "QUIT" {
+			break
+		}
+	}
+
+	//Iterating over a Range of Values
+	// declaring array
+	var OS [3]string
+	OS[0] = "Windows"
+	OS[1] = "MAC"
+	OS[2] = "Android"
+
+	for i, v := range OS {
+		fmt.Println(i, v)
+	}
+
+	// If you don't care about either variable, use _
+	for _, v := range OS {
+		fmt.Println(v)
+	}
+
+	displayDate("Mon 2006-01-02 15:04:05", "Current Date and Time:")
+
+	x := 5
+	y := 6
+	swap(x, y)
+
+	fmt.Println("x , y: ", x, y)
+
+	swap_by_pointer(&x, &y)
+
+	fmt.Println("x, y: ", x, y)
+
+	fmt.Println(addNum(1, 2))
+
+	odds, evens := countOddEven("1234567")
+	fmt.Println("Odds: ", odds, " Evens: ", evens)
+
+	fmt.Println(addNumsVar(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+	// anonymous functions
+	var i = func() int {
+		return 5
+	}
+	fmt.Println(i())
 }
