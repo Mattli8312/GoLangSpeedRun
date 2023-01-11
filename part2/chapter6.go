@@ -33,7 +33,7 @@ func delete(orig []int, index int) ([]int, error) {
 	return orig, nil
 }
 
-func main() {
+func chapter6() {
 	/*---Chapter 6: slicing and dicing using arrays and slices---*/
 
 	// Declaring an array
