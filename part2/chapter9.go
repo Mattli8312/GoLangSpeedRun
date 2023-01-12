@@ -19,6 +19,30 @@ type Person struct {
 	}
 }
 
+type Rates struct {
+	// struct field tags (string literal placed after each field in a struct)
+	// Sometimes keys in JSON string can't be mapped directly to members of your struct in GO
+	Base   string `json:"base currency"`
+	Symbol string `json:"destination currency"`
+}
+
+type FormalName struct {
+	Firstname string
+	Lastname  string
+}
+
+type Address struct {
+	Line1 string
+	Line2 string
+	Line3 string
+}
+
+type Customer struct {
+	Name    FormalName
+	Email   string
+	Address Address
+}
+
 func chapter9() {
 	// Encoding and Decoding Data Using JSON
 
@@ -89,5 +113,30 @@ func chapter9() {
 		}
 	} else {
 		fmt.Println(err)
+	}
+
+	jsonString = `{ "base currency" : "EUR", "destination currency" : "USD" } `
+	var rates Rates
+	err = json.Unmarshal([]byte(jsonString), &rates)
+	if err == nil {
+		fmt.Println(rates.Base)
+		fmt.Println(rates.Symbol)
+	} else {
+		fmt.Println(err)
+	}
+
+	daniel := Customer{
+		Name:  FormalName{Firstname: "Daniel", Lastname: "Sald"},
+		Email: "123@gmail.com",
+		Address: Address{
+			Line1: "123",
+			Line2: "456",
+			Line3: "789",
+		},
+	}
+
+	res, errRes := json.Marshal(daniel)
+	if errRes == nil {
+		fmt.Println(string(res))
 	}
 }
