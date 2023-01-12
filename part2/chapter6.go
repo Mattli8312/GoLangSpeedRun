@@ -20,7 +20,7 @@ func insert(orig []int, index int, value int) ([]int, error) {
 	return orig, nil
 }
 
-func delete(orig []int, index int) ([]int, error) {
+func delete_(orig []int, index int) ([]int, error) {
 	if index < 0 {
 		return nil, errors.New("Index cannot be less than zero")
 	}
@@ -116,6 +116,6 @@ func chapter6() {
 		fmt.Println(err)
 	}
 
-	queue_, err = delete(queue_, 1)
+	queue_, err = delete_(queue_, 1)
 	fmt.Println(queue_, err)
 }
